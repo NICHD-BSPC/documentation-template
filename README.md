@@ -22,3 +22,11 @@ extensions = [
     'sphinx.ext.napoleon',
 ]
 ```
+
+Create a new gh-pages branch, push it, and get back to main:
+
+```bash
+git checkout -b gh-pages
+git push origin gh-pages
+git checkout main
+```
