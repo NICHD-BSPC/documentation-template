@@ -20,7 +20,7 @@ jobs:
       run: |
         eval "$(conda shell.bash hook)"
         conda activate ./env
-        (cd docs && make doctest)
+        (cd doc && make doctest)
 
 
     # Build docs and commit them to gh-pages branch
@@ -30,25 +30,25 @@ jobs:
         # Activate env and build docs
         eval "$(conda shell.bash hook)"
         conda activate ./env
-        (cd docs && make html)
+        (cd doc && make html)
 
         # Clone just the gh-pages branch to a temp dir.
         git clone \
           --single-branch \
           --branch gh-pages "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY" \
-          /tmp/docs
+          /tmp/doc
 
         # Clean out that temp dir, we're about to move our just-built docs there
-        rm -rf /tmp/docs/*
-        cp -r docs/build/html/* /tmp/docs
+        rm -rf /tmp/doc/*
+        cp -r docs/build/html/* /tmp/doc
 
         # GitHub defaults to assuming Jekyll pages, the presence of this file
         # makes Sphinx work well
-        touch /tmp/docs/.nojekyll
+        touch /tmp/doc/.nojekyll
 
         # Commit our changes to the gh-pages branch. Note that they will not be
         # pushed unless we're on the master branch.
-        cd /tmp/docs
+        cd /tmp/doc
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
         git add .
@@ -62,13 +62,13 @@ jobs:
     - name: push artifact
       uses: actions/upload-artifact@v2
       with:
-        name: docs
-        path: /tmp/docs
+        name: doc
+        path: /tmp/doc
 
 
     # Push docs to gh-pages but ONLY if this test is running on master branch
     - name: push docs to gh-pages branch
       if: ${{ (github.ref == 'refs/heads/main') }}
       run: |
-        cd /tmp/docs
+        cd /tmp/doc
         git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY" gh-pages
