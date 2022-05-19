@@ -67,7 +67,7 @@ jobs:
 
   # Push docs to gh-pages but ONLY if this test is running on master branch
   - name: push docs to gh-pages branch
-    if: ${{ (github.ref == 'refs/heads/master') }}
+    if: ${{ (github.ref == 'refs/heads/main') }}
     run: |
       cd /tmp/docs
       git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY" gh-pages
