@@ -40,7 +40,7 @@ jobs:
 
         # Clean out that temp dir, we're about to move our just-built docs there
         rm -rf /tmp/doc/*
-        cp -r docs/build/html/* /tmp/doc
+        cp -r doc/build/html/* /tmp/doc
 
         # GitHub defaults to assuming Jekyll pages, the presence of this file
         # makes Sphinx work well
