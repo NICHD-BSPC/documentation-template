@@ -1,0 +1,4 @@
+env/
+doc/build
+*.pyc
+__pycache__/
