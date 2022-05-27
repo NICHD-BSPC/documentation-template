@@ -1,0 +1,15 @@
+:py:mod:`example_package`
+=========================
+
+.. py:module:: example_package
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   example/index.rst
+
+

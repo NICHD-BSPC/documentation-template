@@ -1,0 +1,66 @@
+:py:mod:`example_package.example`
+=================================
+
+.. py:module:: example_package.example
+
+.. autoapi-nested-parse::
+
+   This is the module documentation. Can link to :func:`super_complex_operation`, :meth:`Demo.run`, :class:`Demo`.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   example_package.example.Demo
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   example_package.example.super_complex_operation
+   example_package.example.simpler_function
+
+
+
+.. py:function:: super_complex_operation(x, raise_error=False)
+
+   Prints the first argument.
+
+   :param x: Any arbitrary object that can be printed.
+   :type x: obj
+   :param raise_error: Just an argument to make it easy to break this function to demonstrate
+                       doctests.
+   :type raise_error: bool
+
+
+.. py:function:: simpler_function(x)
+
+   So much simple
+
+
+.. py:class:: Demo(setup)
+
+   Bases: :py:obj:`object`
+
+   Class-level documentation here.
+
+   Docstring of the class
+
+   :param setup: Arbitrary string
+   :type setup: str
+
+   .. py:method:: run(self)
+
+      Runs something.
+
+
+

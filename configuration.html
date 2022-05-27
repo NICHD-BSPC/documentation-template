@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuration &#8212; template  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Formatting examples" href="typography.html" />
+    <link rel="prev" title="Documentation template" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>After installing Sphinx, run <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> from the command-line to
+initialize documentation. This populates the directory structure, in particular
+writing the <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> and <code class="file docutils literal notranslate"><span class="pre">index.rst</span></code> files.</p>
+<p>Extensions are added the the <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> file, as strings in the
+<code class="docutils literal notranslate"><span class="pre">extensions</span></code> list. The extension you’re using will tell you what to add
+there. For example, here we’re using the <code class="docutils literal notranslate"><span class="pre">sphinx-autoapi</span></code> extension.
+Extensions are often configured in <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code>, as is the case here for the
+<code class="docutils literal notranslate"><span class="pre">sphinx-autoapi</span></code> extension.</p>
+<p>In some cases you may need to modify your <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> to let Sphinx find
+extensions or source code.</p>
+<p>The answers to the questions from <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> are added to
+<code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> and <code class="file docutils literal notranslate"><span class="pre">index.rst</span></code>, so you can always change things there.</p>
+<p>Shpinx comes with the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html">napolean</a>
+extension so you can easily document your Python with NumPy-style docstrings.</p>
+<p>If you install (with conda or pip) the <a class="reference external" href="https://sphinx-autoapi.readthedocs.io/en/latest/">sphinx-autoapi</a> package, as is done here,
+you can automatically document Python, Go, JavaScript, and .NET. This is
+different (and more convenient) than using the Sphinx-included <code class="docutils literal notranslate"><span class="pre">autodoc</span></code>
+extension, which can be a bit finicky to use.</p>
+<p>See the <a class="reference external" href="https://alabaster.readthedocs.io/en/latest/customization.html">Alabaster theme docs</a> for
+customization specific to this default theme</p>
+<p>For more themes, see Sphinx’s <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/theming.html">built-in themes</a> or the full <a class="reference external" href="https://sphinx-themes.org/">Sphinx
+theme gallery</a>.</p>
+<p>You can customize CSS; for example see the relevant <a class="reference external" href="https://alabaster.readthedocs.io/en/latest/customization.html#custom-stylesheet">Alabaster docs</a>.</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">template</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typography.html">Formatting examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doctests.html">Doctests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_setup.html">Building docs on GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Documentation template</a></li>
+      <li>Next: <a href="typography.html" title="next chapter">Formatting examples</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Ryan Dale.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/configuration.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
