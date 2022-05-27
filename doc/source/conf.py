@@ -28,8 +28,7 @@ author = 'Ryan Dale'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
+    'autoapi.extension',
     'sphinx.ext.doctest',
     'sphinx.ext.napoleon',
 ]
