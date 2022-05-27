@@ -1,32 +1,55 @@
+# This GitHub Actions configuration will install conda, run doctests, build the
+# docs, commit them to the gh-pages branch, upload them as an artifact so you
+# can inspect. It will do this on every push. If we're on the `main` branch,
+# then the docs will be pushed to the gh-pages branch, at which time they will
+# be publicly available at https://<user>.github.io/<project>.
+#
+# Note: there are actions that can be used to wrap up some of this
+# configuration. But I find it more useful to do thing the "long way" because
+# it's easier to customize later when needed.
+
+
+# This name will show up in the Actions interface.
 name: main
+
+# Run everything here on every push to the repo.
 on: [push]
 
 jobs:
+
   build-and-test:
+
+    # This is the base image we'll be using. It's Ubuntu plus conveniently
+    # installed extras like conda.
     runs-on: "ubuntu-latest"
     steps:
+
+    # All our steps will need the code, so we use this action to check out our
+    # repo for us
     - uses: actions/checkout@v2
 
-
-    # Set up conda environment for subsequent jobs
+    # Set up conda environment for subsequent jobs. If you need other packages,
+    # add them to requirements.txt
     - name: build env
-      run: |
+      run: |  # Note the "|" which indicates "a multiline string follows"
+
+        # The base GitHub Ubuntu image has conda already installed.
+        # The eval call does the equivalent of "conda init bash" and we will
+        # use it at the beginning of subsequent steps that need to use conda.
         eval "$(conda shell.bash hook)"
         conda create -p ./env --file requirements.txt --channel conda-forge
 
-
-    # Run doctests if you have them configured
+    # Run doctests (delete this if you are not using doctests)
     - name: run doctests
       run: |
         eval "$(conda shell.bash hook)"
         conda activate ./env
         (cd doc && make doctest)
 
-
-    # Build docs and commit them to gh-pages branch
+    # Build docs here, and copy them over to a temp directory that is a clone
+    # of the gh-pages branch.
     - name: build docs
       run: |
-
         # Activate env and build docs
         eval "$(conda shell.bash hook)"
         conda activate ./env
@@ -38,16 +61,29 @@ jobs:
           --branch gh-pages "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY" \
           /tmp/doc
 
-        # Clean out that temp dir, we're about to move our just-built docs there
+        # Clean out that temp dir because we're about to move our just-built
+        # docs there
         rm -rf /tmp/doc/*
         cp -r doc/build/html/* /tmp/doc
 
-        # GitHub defaults to assuming Jekyll pages, the presence of this file
-        # makes Sphinx work well
+        # GitHub defaults to assuming Jekyll pages; the presence of this file
+        # makes Sphinx pages work properly with GitHub
         touch /tmp/doc/.nojekyll
 
-        # Commit our changes to the gh-pages branch. Note that they will not be
-        # pushed unless we're on the master branch.
+    # Upload the built docs as an artifact for inspection (even on PRs). This
+    # will show up in the Actions web interface.
+    - name: push artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: doc
+        path: /tmp/doc
+
+    # Push docs to gh-pages but ONLY if this test is running on master branch
+    - name: push docs to gh-pages branch
+      if: ${{ (github.ref == 'refs/heads/main') }}
+      run: |
+
+        # Commit our changes to the gh-pages branch
         cd /tmp/doc
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
@@ -57,18 +93,6 @@ jobs:
         # consider that an error so we ignore it.
         git commit -m 'update docs' -a || true
 
-
-    # Upload the built docs as an artifact for inspection (even on PRs)
-    - name: push artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: doc
-        path: /tmp/doc
-
-
-    # Push docs to gh-pages but ONLY if this test is running on master branch
-    - name: push docs to gh-pages branch
-      if: ${{ (github.ref == 'refs/heads/main') }}
-      run: |
-        cd /tmp/doc
+        # Push the gh-pages branch. Once this happens, your changes will be
+        # live (though could take a couple mins to show up)
         git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY" gh-pages
