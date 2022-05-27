@@ -39,6 +39,7 @@ Here is the table of contents:
    :maxdepth: 2
    :caption: Contents:
 
+   configuration
 
 
 Indices and tables
