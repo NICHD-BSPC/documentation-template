@@ -40,6 +40,7 @@ Here is the table of contents:
    :caption: Contents:
 
    configuration
+   typography
 
 
 Indices and tables
