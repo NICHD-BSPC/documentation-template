@@ -33,6 +33,18 @@ extensions = [
     'sphinx.ext.napoleon',
 ]
 
+# Based on https://github.com/readthedocs/sphinx-autoapi:
+autoapi_type = 'python'
+
+# Auto-document code found in these directories
+autoapi_dirs = [
+    '../../src',
+]
+
+# Use both class-level and __init__-level docstrings when documenting
+# classes
+autoapi_python_class_content = 'both'
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
