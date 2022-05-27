@@ -10,14 +10,14 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../../src'))
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'Documentation template'
+project = 'template'
 copyright = '2022, Ryan Dale'
 author = 'Ryan Dale'
 
@@ -28,11 +28,22 @@ author = 'Ryan Dale'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
+    'autoapi.extension',
     'sphinx.ext.doctest',
     'sphinx.ext.napoleon',
 ]
+
+# Based on https://github.com/readthedocs/sphinx-autoapi:
+autoapi_type = 'python'
+
+# Auto-document code found in these directories
+autoapi_dirs = [
+    '../../src',
+]
+
+# Use both class-level and __init__-level docstrings when documenting
+# classes
+autoapi_python_class_content = 'both'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

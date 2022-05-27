@@ -1,2 +1,3 @@
-sphinx
 make
+sphinx
+sphinx-autoapi
