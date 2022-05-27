@@ -41,6 +41,7 @@ Here is the table of contents:
 
    configuration
    typography
+   doctests
 
 
 Indices and tables
