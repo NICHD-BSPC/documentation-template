@@ -1,7 +1,5 @@
 """
-Module documentation goes here.
-
-Can link to :func:`super_complex_operation`, :meth:`
+This is the module documentation. Can link to :func:`super_complex_operation`, :meth:`Demo.run`, :class:`Demo`.
 """
 
 
@@ -26,7 +24,14 @@ def super_complex_operation(x, raise_error=False):
     print(x)
 
 
+def simpler_function(x):
+    """So much simple"""
+    print(x)
+
 class Demo(object):
+    """
+    Class-level documentation here.
+    """
     def __init__(self, setup):
         """
         Docstring of the class
