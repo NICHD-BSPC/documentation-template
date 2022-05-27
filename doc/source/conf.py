@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('../../src'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Documentation template'
+project = 'template'
 copyright = '2022, Ryan Dale'
 author = 'Ryan Dale'
 
