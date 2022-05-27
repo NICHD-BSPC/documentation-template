@@ -42,6 +42,7 @@ Here is the table of contents:
    configuration
    typography
    doctests
+   github_setup
 
 
 Indices and tables
