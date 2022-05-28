@@ -29,6 +29,7 @@ author = 'Ryan Dale'
 # ones.
 extensions = [
     'autoapi.extension',
+    'sphinx.ext.viewcode',
     'sphinx.ext.doctest',
     'sphinx.ext.napoleon',
 ]
