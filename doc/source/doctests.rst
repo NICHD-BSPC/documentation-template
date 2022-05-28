@@ -1,3 +1,5 @@
+.. _doctests:
+
 Doctests
 ========
 
@@ -28,7 +30,11 @@ And the expected output:
 
     does this work?
 
-Here's a doctest block:
+If the output from running the code does not exactly match the written output,
+then the test will fail and you'll see errors output to the terminal when
+running ``make doctest``.
+
+Here's a doctest-style block:
 
 .. doctest::
 
@@ -38,6 +44,12 @@ Here's a doctest block:
     #
     # Note that a (hidden) .. testsetup: block has already imported the module
     # we are testing
+
     >>> d = example.Demo(None)
+
     >>> example.simpler_function(d)
     <example_package.example.Demo object at 0x...>
+
+
+Again, if the just-run code does not exactly match the expected output, the test
+will fail. Check the source of this page ("Page Source" link below).

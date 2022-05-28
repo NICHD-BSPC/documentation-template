@@ -1,3 +1,5 @@
-make
-sphinx
-sphinx-autoapi
+# This is requirements.txt
+
+make           # sphinx builds a makefile that we use
+sphinx         # need sphinx itself
+sphinx-autoapi # extension for automatically documenting code

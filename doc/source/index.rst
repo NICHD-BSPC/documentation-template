@@ -6,22 +6,53 @@
 Setting up Sphinx documentation
 ===============================
 
-This page illustrates how to set up Sphinx with automatic API documentation for
-your Python code and host it on GitHub Pages.
+This page illustrates how to set up `Sphinx <sphinx-doc.org/>`_ with automatic
+API documentation for your Python code and host it on GitHub Pages.
 
-.. This is a ReST comment which will not be rendered.
+The corresponding repository is
+https://github.com/nichd-bspc/documentation-template. It has an example Python
+module along with the source for this documentation.
 
+.. Hi, welcome to the ReST source! This is a ReST comment which will not be rendered.
 
 Initial setup
-~~~~~~~~~~~~~
+-------------
 
-Here is how this repo, and the hosted pages, were set up:
+This section describes how to initially set up your documentation.
 
+Dependencies
+~~~~~~~~~~~~
+
+First, create an environment with dependencies. Here we happen to be using
+`conda <https://docs.conda.io/en/latest/>`_ but pip, venv, apt, homebrew are
+other options.
+
+For reference, here are the contents of :file:`requirements.txt` from the repo:
+
+.. literalinclude:: ../../requirements.txt
+
+To use this file:
 
 .. code-block:: bash
 
     conda create -p ./env --file requirements.txt
     conda activate ./env
+
+
+Run ``sphinx-quickstart``
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Since this template is intended to illustrate documentation living alongside
+a Python package, we create a :file:`doc` subdirectory and run
+``sphinx-quickstart`` from there to set up the directory structure.
+
+We also assume that the Python module is living next to :file:`doc`, in
+a :file:`src` directory. Check the `repo
+<https://github.com/nichd-bspc/documentation-template>`_ to see how this was
+set up.
+
+.. code-block:: bash
+
     mkdir doc
     cd doc
     sphinx-quickstart
@@ -30,37 +61,33 @@ Here is how this repo, and the hosted pages, were set up:
     # Entered author and project title
     # Otherwise used defaults
 
-Edit :file:`doc/source/conf.py` to add extensions, e.g.:
+This will set up the directory structure. the contents of :file:`doc` should look like this::
 
-.. code-block:: python
+    ├── build           # Built html will eventually go here
+    ├── make.bat        # Used for windows
+    ├── Makefile        # Main makefile to use
+    └── source          # ReST source and config go here
+        ├── conf.py     # Default config file, ready to edit
+        ├── index.rst   # Default index file, ready to edit
+        ├── _static     # Empty for now, CSS can go here
+        └── _templates  # used for themes and templates (advanced)
 
-    extensions = [
-        'autoapi.extension', # Automatically display docstrings; needs sphinx-autoapi installed
-        'sphinx.ext.doctest', # Built-in extension. Write doctests in your sphinx docs
-        'sphinx.ext.napoleon', # Built-in extension. Use if you like NumPy style docstrings
-    ]
+Build docs
+~~~~~~~~~~
 
-
-If you're documenting code that's going to be tested, it needs to be importable
-by Sphinx, which means adding it to the path in :file:`conf.py`:
-
-.. code-block:: python
-
-    import os
-    import sys
-    sys.path.insert(0, os.path.abspath('../../src'))
-
-If you're going to be hosting code on GitHub Pages, create a new ``gh-pages``
-branch, push it, and get back to main. The ``gh-pages`` branch needs to exist
-for the GitHub Actions to work.
+In the :file:`doc` directory, you should now be able to run:
 
 .. code-block:: bash
 
-    git checkout -b gh-pages
-    git push origin gh-pages
-    git checkout main
+    make html
 
-You'll also want to copy the :file:`.github/workflows/main.yml` file to use as a template.
+At the end you'll get a message, *The HTML pages are in build/html*. Open
+:file:`build/html/index.html` in a web browser to see the docs.
+
+From here on out it's a matter of tweaking configuration and actually writing
+the documentation.
+
+
 
 Next steps
 ~~~~~~~~~~
@@ -69,26 +96,6 @@ Take a look around these docs. Click the "Page source" link in the footer of
 the page to see the ReStructured Text input used to generate this page or any
 other pages in these docs.
 
-When adding pages to the table of contents (the ``.. toctree::`` directive; see
-the source of this page), pay attention to the indentation of the
-auto-generated index.rst file. That is:
-
-.. code-block::
-
-    .. toctree::
-       :maxdepth: 2
-    ^^^
-    Only three spaces in the default-generated index.rst.
-
-The ``.. toctree::`` directive creates a table of contents. Options to
-directives take the form of ``:optionname: value``, and are indented under the
-``.. directive::`` line. Take a peek at the source code to see it in action.
-Below the options are names of ``.rst`` files -- but without the ``.rst``
-extension.
-
-Here is the table of contents. If you look at the source, you won't see
-anything referring to the API docs. That's because that entry is automatically
-added by the ``sphinx-autoapi`` extension.
 
 
 .. toctree::
