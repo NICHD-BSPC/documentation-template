@@ -30,6 +30,9 @@ documentation below.
     Jekyll-generated docs. The GitHub Actions for this repo take care of
     this.
 
+``.github/workflows/main.yml``
+------------------------------
+
 .. literalinclude:: ../../.github/workflows/main.yml
     :language: yaml
     :linenos:

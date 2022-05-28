@@ -17,7 +17,7 @@ extensions or source code.
 The answers to the questions from ``sphinx-quickstart`` are added to
 :file:`conf.py` and :file:`index.rst`, so you can always change things there.
 
-Shpinx comes with the `napolean
+Sphinx comes with the `napolean
 <https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html>`_
 extension so you can easily document your Python with NumPy-style docstrings.
 
