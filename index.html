@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Documentation template &#8212; template  documentation</title>
+    <title>Setting up Sphinx documentation &#8212; template  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -28,44 +28,107 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+              <div class="related top">
+                &nbsp;
+  <nav id="rellinks">
+    <ul>
+        <li>
+          <a href="configuration.html" title="Next document">Configuration</a>
+          &rarr;
+        </li>
+    </ul>
+  </nav>
+              </div>
           
 
           <div class="body" role="main">
             
-  <div class="section" id="documentation-template">
-<h1>Documentation template<a class="headerlink" href="#documentation-template" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="setting-up-sphinx-documentation">
+<h1>Setting up Sphinx documentation<a class="headerlink" href="#setting-up-sphinx-documentation" title="Permalink to this headline">¶</a></h1>
 <p>This page illustrates how to set up Sphinx with automatic API documentation for
 your Python code and host it on GitHub Pages.</p>
-<p>Click the “Page source” link in the footer of the page to see the ReStructured
-Text input used to generate this page or any other pages in these docs.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Pay attention to the indentation of the auto-generated index.rst file.</p>
+<div class="section" id="initial-setup">
+<h2>Initial setup<a class="headerlink" href="#initial-setup" title="Permalink to this headline">¶</a></h2>
+<p>Here is how this repo, and the hosted pages, were set up:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -p ./env --file requirements.txt
+conda activate ./env
+mkdir doc
+<span class="nb">cd</span> doc
+sphinx-quickstart
+
+<span class="c1"># &quot;y&quot; to separate source and build directories</span>
+<span class="c1"># Entered author and project title</span>
+<span class="c1"># Otherwise used defaults</span>
+</pre></div>
+</div>
+<p>Edit <code class="file docutils literal notranslate"><span class="pre">doc/source/conf.py</span></code> to add extensions, e.g.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;autoapi.extension&#39;</span><span class="p">,</span> <span class="c1"># Automatically display docstrings; needs sphinx-autoapi installed</span>
+    <span class="s1">&#39;sphinx.ext.doctest&#39;</span><span class="p">,</span> <span class="c1"># Built-in extension. Write doctests in your sphinx docs</span>
+    <span class="s1">&#39;sphinx.ext.napoleon&#39;</span><span class="p">,</span> <span class="c1"># Built-in extension. Use if you like NumPy style docstrings</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>If you’re documenting code that’s going to be tested, it needs to be importable
+by Sphinx, which means adding it to the path in <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../../src&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>If you’re going to be hosting code on GitHub Pages, create a new <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>
+branch, push it, and get back to main. The <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch needs to exist
+for the GitHub Actions to work.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout -b gh-pages
+git push origin gh-pages
+git checkout main
+</pre></div>
+</div>
+<p>You’ll also want to copy the <code class="file docutils literal notranslate"><span class="pre">.github/workflows/main.yml</span></code> file to use as a template.</p>
+</div>
+<div class="section" id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>Take a look around these docs. Click the “Page source” link in the footer of
+the page to see the ReStructured Text input used to generate this page or any
+other pages in these docs.</p>
+<p>When adding pages to the table of contents (the <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> directive; see
+the source of this page), pay attention to the indentation of the
+auto-generated index.rst file. That is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">toctree</span><span class="p">::</span>
    <span class="p">:</span><span class="n">maxdepth</span><span class="p">:</span> <span class="mi">2</span>
 <span class="o">^^^</span>
-<span class="n">only</span> <span class="n">three</span> <span class="n">spaces</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">default</span><span class="o">-</span><span class="n">generated</span> <span class="n">index</span><span class="o">.</span><span class="n">rst</span>
+<span class="n">Only</span> <span class="n">three</span> <span class="n">spaces</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">default</span><span class="o">-</span><span class="n">generated</span> <span class="n">index</span><span class="o">.</span><span class="n">rst</span><span class="o">.</span>
 </pre></div>
-</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> directive creates a table of contents. Options to
 directives take the form of <code class="docutils literal notranslate"><span class="pre">:optionname:</span> <span class="pre">value</span></code>, and are indented under the
 <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">directive::</span></code> line. Take a peek at the source code to see it in action.
 Below the options are names of <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files – but without the <code class="docutils literal notranslate"><span class="pre">.rst</span></code>
 extension.</p>
-<p>Here is the table of contents:</p>
+<p>Here is the table of contents. If you look at the source, you won’t see
+anything referring to the API docs. That’s because that entry is automatically
+added by the <code class="docutils literal notranslate"><span class="pre">sphinx-autoapi</span></code> extension.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="typography.html">Formatting examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typography.html">Formatting examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="typography.html#inline-examples">Inline examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typography.html#code-examples">Code examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typography.html#paragraph-level-markup">Paragraph-level markup</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="doctests.html">Doctests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="github_setup.html">Building docs on GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_setup.html">Building docs on GitHub</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="github_setup.html#github-workflows-main-yml"><code class="docutils literal notranslate"><span class="pre">.github/workflows/main.yml</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="autoapi/example_package/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">example_package</span></code></a></li>
 </ul>
 </li>
 </ul>
+</div>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -79,6 +142,17 @@ extension.</p>
 
 
           </div>
+              <div class="related bottom">
+                &nbsp;
+  <nav id="rellinks">
+    <ul>
+        <li>
+          <a href="configuration.html" title="Next document">Configuration</a>
+          &rarr;
+        </li>
+    </ul>
+  </nav>
+              </div>
           
         </div>
       </div>
