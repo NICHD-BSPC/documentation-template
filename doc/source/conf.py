@@ -33,17 +33,6 @@ extensions = [
     'sphinx.ext.napoleon',
 ]
 
-# Based on https://github.com/readthedocs/sphinx-autoapi:
-autoapi_type = 'python'
-
-# Auto-document code found in these directories
-autoapi_dirs = [
-    '../../src',
-]
-
-# Use both class-level and __init__-level docstrings when documenting
-# classes
-autoapi_python_class_content = 'both'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -65,3 +54,20 @@ html_theme = 'alabaster'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+
+# ----------------------------------------------------------------------------
+# Customized options
+#
+# Based on https://github.com/readthedocs/sphinx-autoapi:
+autoapi_type = 'python'
+
+# Auto-document code found in these directories
+autoapi_dirs = [
+    '../../src',
+]
+
+# Use both class-level and __init__-level docstrings when documenting
+# classes
+autoapi_python_class_content = 'both'
+
