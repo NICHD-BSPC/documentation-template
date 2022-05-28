@@ -1,10 +1,43 @@
 Building docs on GitHub
 =======================
 
+To host on GitHub Pages, you configuring the settings in the project
+(:guilabel:`Settings -> Pages -> Source branch`) to a branch. Thereafter, any
+content in that branch is automatically hosted at
+``https://<user>.github.io/<project>``.
+
+A common pattern is to maintain a separate branch called ``gh-pages``, and keep
+it completely cleaned out except for the built HTML documentation (with
+:file:`index.html` as the top level).
+
+This template documentation uses GitHub Actions to build the docs and push to
+``gh-pages``. If you're going to be using the GitHub Actions config, you'll need
+to create that branch manually first:
+
+.. code-block:: bash
+
+    # Assuming there's nothing in your repo yet.
+    git checkout -b gh-pages
+
+    # If you have anything commited, use `git rm *` to completely
+    # clean out this branch.
+
+    # Then assuming your remote is on GitHub
+    git push origin gh-pages
+
+    # Get back to the main branch
+    git checkout main
+
+
+
 This repo uses GitHub Actions to set up an environment, build the docs, and add
 to the ``gh-pages`` branch, which is automatically served at the URL
 ``https://<user>.github.io/<project>``, which in this case is
 https://nichd-bspc.github.io/documentation-template.
+
+The configuration is in :file:`.github/workflows/main.yml`. It's generic, so as
+long as you use ``gh-pages`` and have the source directory separate from build,
+it should work.
 
 This GitHub Actions configuration will:
 
@@ -14,13 +47,15 @@ This GitHub Actions configuration will:
 - commit them to the `gh-pages` branch
 - upload them as an artifact in the Actions web interface so you can inspect
 
+From the :guilabel:`Actions` tab of the GitHub interface, you can click on a job
+and look for the :guilabel:`Artifacts` section to download the built docs. This
+can be nice for contributors to see the results of their changes without needing
+to set everything up locally.
+
 It will do those steps on every push. If we're on the `main` branch, then the
 docs will also be pushed to the `gh-pages` branch, at which time they will be
 publicly available at `https://<user>.github.io/<project>`.
 
-You can find the configuration in this repository under
-:file:`.github/workflows/main.yml`, and it is included directly in this
-documentation below.
 
 .. note::
 
@@ -32,6 +67,10 @@ documentation below.
 
 ``.github/workflows/main.yml``
 ------------------------------
+
+You can find the configuration in this repository under
+:file:`.github/workflows/main.yml`, and it is included directly in this
+documentation here:
 
 .. literalinclude:: ../../.github/workflows/main.yml
     :language: yaml
