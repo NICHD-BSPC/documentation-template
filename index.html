@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Setting up Sphinx documentation &#8212; Documentation template  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
@@ -12,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -43,18 +45,18 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="setting-up-sphinx-documentation">
-<h1>Setting up Sphinx documentation<a class="headerlink" href="#setting-up-sphinx-documentation" title="Permalink to this headline">¶</a></h1>
+  <section id="setting-up-sphinx-documentation">
+<h1>Setting up Sphinx documentation<a class="headerlink" href="#setting-up-sphinx-documentation" title="Permalink to this heading">¶</a></h1>
 <p>This page illustrates how to set up <a class="reference external" href="sphinx-doc.org/">Sphinx</a> with automatic
 API documentation for your Python code and host it on GitHub Pages.</p>
 <p>The corresponding repository is
 <a class="reference external" href="https://github.com/nichd-bspc/documentation-template">https://github.com/nichd-bspc/documentation-template</a>. It has an example Python
 module along with the source for this documentation.</p>
-<div class="section" id="initial-setup">
-<h2>Initial setup<a class="headerlink" href="#initial-setup" title="Permalink to this headline">¶</a></h2>
+<section id="initial-setup">
+<h2>Initial setup<a class="headerlink" href="#initial-setup" title="Permalink to this heading">¶</a></h2>
 <p>This section describes how to initially set up your documentation.</p>
-<div class="section" id="dependencies">
-<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h3>
+<section id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading">¶</a></h3>
 <p>First, create an environment with dependencies. Here we happen to be using
 <a class="reference external" href="https://docs.conda.io/en/latest/">conda</a> but pip, venv, apt, homebrew are
 other options.</p>
@@ -71,9 +73,9 @@ other options.</p>
 conda activate ./env
 </pre></div>
 </div>
-</div>
-<div class="section" id="run-sphinx-quickstart">
-<h3>Run <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code><a class="headerlink" href="#run-sphinx-quickstart" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="run-sphinx-quickstart">
+<h3>Run <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code><a class="headerlink" href="#run-sphinx-quickstart" title="Permalink to this heading">¶</a></h3>
 <p>Since this template is intended to illustrate documentation living alongside
 a Python package, we create a <code class="file docutils literal notranslate"><span class="pre">doc</span></code> subdirectory and run
 <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> from there to set up the directory structure.</p>
@@ -100,9 +102,9 @@ sphinx-quickstart
     └── _templates  # used for themes and templates (advanced)
 </pre></div>
 </div>
-</div>
-<div class="section" id="build-docs">
-<h3>Build docs<a class="headerlink" href="#build-docs" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="build-docs">
+<h3>Build docs<a class="headerlink" href="#build-docs" title="Permalink to this heading">¶</a></h3>
 <p>In the <code class="file docutils literal notranslate"><span class="pre">doc</span></code> directory, you should now be able to run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make html
 </pre></div>
@@ -111,9 +113,9 @@ sphinx-quickstart
 <code class="file docutils literal notranslate"><span class="pre">build/html/index.html</span></code> in a web browser to see the docs.</p>
 <p>From here on out it’s a matter of tweaking configuration and actually writing
 the documentation.</p>
-</div>
-<div class="section" id="next-steps">
-<h3>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="next-steps">
+<h3>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">¶</a></h3>
 <p>Take a look around these docs. Click the “Page source” link in the footer of
 the page to see the ReStructured Text input used to generate this page or any
 other pages in these docs.</p>
@@ -143,17 +145,17 @@ other pages in these docs.</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
+</section>
 
 
           </div>
@@ -209,7 +211,7 @@ other pages in these docs.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -226,7 +228,7 @@ other pages in these docs.</p>
       &copy;2022, Ryan Dale.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

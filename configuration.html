@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Configuration &#8212; Documentation template  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
@@ -12,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -48,8 +50,8 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="configuration">
-<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+  <section id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h1>
 <p>Running <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> from the command-line initializes documentation.
 This populates the directory structure, in particular writing the
 <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> and <code class="file docutils literal notranslate"><span class="pre">index.rst</span></code> files.</p>
@@ -58,8 +60,8 @@ files, so you can always change things there. The only thing that is not easily
 adjustable is the separation of build and source directories; if you want to
 change that then it’s easier to start over in an empty directory and run
 <code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code> again.</p>
-<div class="section" id="adding-pages">
-<h2>Adding pages<a class="headerlink" href="#adding-pages" title="Permalink to this headline">¶</a></h2>
+<section id="adding-pages">
+<h2>Adding pages<a class="headerlink" href="#adding-pages" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> directive creates a table of contents. Add pages to this
 directive, as relative paths without the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> suffix, to include them in the
 built documentation. Compare the home page of these docs with the <a class="reference external" href="https://raw.githubusercontent.com/NICHD-BSPC/documentation-template/main/doc/source/index.rst">index.rst
@@ -89,9 +91,9 @@ of the filename</em>. That is:</p>
 referring to the API docs even though there’s an entry in the built
 documentation. That’s because that entry is automatically added by the
 <code class="docutils literal notranslate"><span class="pre">sphinx-autoapi</span></code> extension.</p>
-</div>
-<div class="section" id="extensions">
-<h2>Extensions<a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="extensions">
+<h2>Extensions<a class="headerlink" href="#extensions" title="Permalink to this heading">¶</a></h2>
 <p>Extensions are added the the <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code> file, as strings in the
 <code class="docutils literal notranslate"><span class="pre">extensions</span></code> list. The extension you’re using will tell you what to add
 there. For example, here we’re using the <code class="docutils literal notranslate"><span class="pre">sphinx-autoapi</span></code> extension.
@@ -129,16 +131,16 @@ you can automatically document Python, Go, JavaScript, and .NET. This is
 different (and more convenient) than using the Sphinx-included <code class="docutils literal notranslate"><span class="pre">autodoc</span></code>
 extension, which can be a bit finicky to use.</p></li>
 </ul>
-</div>
-<div class="section" id="themes">
-<h2>Themes<a class="headerlink" href="#themes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="themes">
+<h2>Themes<a class="headerlink" href="#themes" title="Permalink to this heading">¶</a></h2>
 <p>See the <a class="reference external" href="https://alabaster.readthedocs.io/en/latest/customization.html">Alabaster theme docs</a> for
 customization specific to this default theme.</p>
 <p>For more themes, see Sphinx’s <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/theming.html">built-in themes</a> or the full <a class="reference external" href="https://sphinx-themes.org/">Sphinx
 theme gallery</a>.</p>
 <p>You can customize CSS; for example see the relevant <a class="reference external" href="https://alabaster.readthedocs.io/en/latest/customization.html#custom-stylesheet">Alabaster docs</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -204,7 +206,7 @@ theme gallery</a>.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -221,7 +223,7 @@ theme gallery</a>.</p>
       &copy;2022, Ryan Dale.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

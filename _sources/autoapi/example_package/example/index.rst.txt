@@ -58,7 +58,7 @@ Functions
    :param setup: Arbitrary string
    :type setup: str
 
-   .. py:method:: run(self)
+   .. py:method:: run()
 
       Runs something.
 
